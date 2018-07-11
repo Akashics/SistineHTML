@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistine Fibel</title>
+
+  <link rel="stylesheet" href="/assets/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/css/light.css">
+  <link rel="stylesheet" href="/assets/css/dark.css">
+  <link rel="stylesheet" href="/assets/css/hover.css">
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/button.css' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/icon.css' />
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+
+<body>
+  <div class="tooltip"></div>
+  <section class="page" id="home-page">
+    <article>
+      <nav class="is-widescreen is-mobile" id="menu">
+        <style>
+          @media only screen and (max-width: 600px) {
+            .alert {
+              display: none !important;
+            }
+          }
+        </style>
+        <input type="checkbox" id="show-menu">
+        <label id="menu-trigger" for="show-menu">
+          <span class="menu-bar menu-bar-1 white"></span>
+          <span class="menu-bar menu-bar-2 white"></span>
+          <span class="menu-bar menu-bar-3 white"></span>
+        </label>
+        <div class="menu container">
+          <ul>
+            <li>
+              <a class="logo" id="home" href="/">
+                <p style="font-family: Buffalo; font-size: 250%">Sistine Fibel</p>
+            </li>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/stats">Stats</a>
+            </li>
+            <li>
+              <a href="/commands">Command List</a>
+            </li>
+            <li>
+              <a href="https://discord.gg/jgPNHWy">Join Discord</a>
+            </li>
+            <li>
+              <a onclick="botlists()">Bot Lists</a>
+            </li>
+            <li>
+              <a href="/credits">Credit</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <section>
+        <header>
+          <div class="container is-widescreen">
+            <div class="columns is-tablet is-centered">
+              <div class="column">
+                <h1 id="bottitle">Sistine Fibel</h1>
+                <h2>Add some spice to your discord guilds with Sistine Fibel!</h2>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="content" id="stats">
+          <div class="container is-widescreen">
+            <h1 style="color: #FFF; text-align: center; padding-top: 20px">Stats</h1>
+            <div class="columns is-tablet is-centered">
+              <div class="column is-one-third">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>Guilds</p>
+                      </td>
+                      <td>
+                        <p id="guilds"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Voice Streams</p>
+                      </td>
+                      <td>
+                        <p id="voice"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Text Channels</p>
+                      </td>
+                      <td>
+                        <p id="text"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Cached Users</p>
+                      </td>
+                      <td>
+                        <p id="users"></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="column is-one-third">
+
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>Messages</p>
+                      </td>
+                      <td>
+                        <p id="messages"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Commands Ran</p>
+                      </td>
+                      <td>
+                        <p id="executions"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>DAPI Latency</p>
+                      </td>
+                      <td>
+                        <p id="ping"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Uptime</p>
+                      </td>
+                      <td>
+                        <p id="uptime"></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="column is-one-third">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>CPU Last Used</p>
+                      </td>
+                      <td>
+                        <p id="cpu"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>RAM Last Used</p>
+                      </td>
+                      <td>
+                        <p id="ram"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p># of CMDS Last Used</p>
+                      </td>
+                      <td>
+                        <p id="cmds"></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Messages Per Minute</p>
+                      </td>
+                      <td>
+                        <p id="mpm"></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="container is-widescreen">
+            <div class="columns is-tablet is-centered">
+              <div class="column is-one-half">
+                <div id="commandUsage"></div>
+              </div>
+              <div class="column is-one-half">
+                <div id="commandUsage2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content" id="commands">
+          <div class="container is-widescreen">
+            <div class="columns is-tablet is-centered">
+              <div class="column">
+                <h1 style="color: #FFF; text-align: center; padding-top: 20px">Commands</h1>
+                <h2>Admin / 1 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>conf</td>
+                      <td></td>
+                      <td>Define per-server configuration.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>Animals / 9 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>birb</td>
+                      <td>bird</td>
+                      <td>COMMAND_BIRB_DESCRIPTION has not been localized for en-US yet.</td>
+                    </tr>
+                    <tr>
+                      <td>s>cat</td>
+                      <td>randomcat, catto</td>
+                      <td>Here kitty kitty. Grabs an random cat image from random.cat</td>
+                    </tr>
+                    <tr>
+                      <td>s>dog</td>
+                      <td>randomdog, doggo</td>
+                      <td>Come here boy! Grabs a random dog image from dog.ceo</td>
+                    </tr>
+                    <tr>
+                      <td>s>duck</td>
+                      <td></td>
+                      <td>COMMAND_DUCK_DESCRIPTION has not been localized for en-US yet.</td>
+                    </tr>
+                    <tr>
+                      <td>s>fox</td>
+                      <td></td>
+                      <td>COMMAND_FOX_DESCRIPTION has not been localized for en-US yet.</td>
+                    </tr>
+                    <tr>
+                      <td>s>hoot</td>
+                      <td></td>
+                      <td>Speak in OWL.</td>
+                    </tr>
+                    <tr>
+                      <td>s>owl</td>
+                      <td></td>
+                      <td>COMMAND_OWL_DESCRIPTION has not been localized for en-US yet.</td>
+                    </tr>
+                    <tr>
+                      <td>s>penguin</td>
+                      <td>pingu, pengu</td>
+                      <td>COMMAND_PENGUIN_DESCRIPTION has not been localized for en-US yet.</td>
+                    </tr>
+                    <tr>
+                      <td>s>shiba</td>
+                      <td></td>
+                      <td>COMMAND_SHIBA_DESCRIPTION has not been localized for en-US yet.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>Canvas / 34 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>achievement</td>
+                      <td></td>
+                      <td>Creates an image based achievement</td>
+                    </tr>
+                    <tr>
+                      <td>s>approved</td>
+                      <td></td>
+                      <td>Show off your stamp of approval.</td>
+                    </tr>
+                    <tr>
+                      <td>s>batslap</td>
+                      <td></td>
+                      <td>Slap another user as Batman.</td>
+                    </tr>
+                    <tr>
+                      <td>s>beautiful</td>
+                      <td>beautify</td>
+                      <td>Admire the beauty of another user, or yourself.</td>
+                    </tr>
+                    <tr>
+                      <td>s>blame</td>
+                      <td></td>
+                      <td>Assign the blame to another user thru a canvas based api</td>
+                    </tr>
+                    <tr>
+                      <td>s>bobross</td>
+                      <td></td>
+                      <td>Paint a happy little accident.</td>
+                    </tr>
+                    <tr>
+                      <td>s>challenger</td>
+                      <td></td>
+                      <td>A new challenger has appeared.</td>
+                    </tr>
+                    <tr>
+                      <td>s>confused</td>
+                      <td></td>
+                      <td>Show someone how confused you are.</td>
+                    </tr>
+                    <tr>
+                      <td>s>crush</td>
+                      <td></td>
+                      <td>Wouldn't Wolverine love this picture?</td>
+                    </tr>
+                    <tr>
+                      <td>s>facepalm</td>
+                      <td>facep</td>
+                      <td>Some people might really get you the point to Facepalm, this does exactly that..</td>
+                    </tr>
+                    <tr>
+                      <td>s>fanslap</td>
+                      <td></td>
+                      <td>Slap another user for their idiocy with a paper fan.</td>
+                    </tr>
+                    <tr>
+                      <td>s>garbage</td>
+                      <td></td>
+                      <td>Get thrown out with the trash</td>
+                    </tr>
+                    <tr>
+                      <td>s>heavyfear</td>
+                      <td></td>
+                      <td>Fear nothing... but that thing.</td>
+                    </tr>
+                    <tr>
+                      <td>s>karen</td>
+                      <td></td>
+                      <td>Look what Karen has.</td>
+                    </tr>
+                    <tr>
+                      <td>s>missing</td>
+                      <td></td>
+                      <td>Post a missing persons poster of a user.</td>
+                    </tr>
+                    <tr>
+                      <td>s>painting</td>
+                      <td></td>
+                      <td>Display a valuable, but deadly painting.</td>
+                    </tr>
+                    <tr>
+                      <td>s>pls</td>
+                      <td></td>
+                      <td>Ask nicely!</td>
+                    </tr>
+                    <tr>
+                      <td>s>rainbow</td>
+                      <td></td>
+                      <td>Show off your rainbow.</td>
+                    </tr>
+                    <tr>
+                      <td>s>rejected</td>
+                      <td>reject</td>
+                      <td>Reject someone.</td>
+                    </tr>
+                    <tr>
+                      <td>s>respect</td>
+                      <td></td>
+                      <td>Pay respects to someone.</td>
+                    </tr>
+                    <tr>
+                      <td>s>snapchat</td>
+                      <td></td>
+                      <td>Creates a snapchat based meme.</td>
+                    </tr>
+                    <tr>
+                      <td>s>steam</td>
+                      <td>steamcard, steamtradingcard</td>
+                      <td>Create a steam trading card.</td>
+                    </tr>
+                    <tr>
+                      <td>s>stepped</td>
+                      <td></td>
+                      <td>Post a stepped picture of a user.</td>
+                    </tr>
+                    <tr>
+                      <td>s>suggestionbox</td>
+                      <td></td>
+                      <td>Creates a meme based on a webcomic.</td>
+                    </tr>
+                    <tr>
+                      <td>s>superpunch</td>
+                      <td></td>
+                      <td>Punch someone as Superman.</td>
+                    </tr>
+                    <tr>
+                      <td>s>superspank</td>
+                      <td></td>
+                      <td>Spank someone as Superman.</td>
+                    </tr>
+                    <tr>
+                      <td>s>tattoo</td>
+                      <td></td>
+                      <td>Adds a tattoo to a mentioned user's arm</td>
+                    </tr>
+                    <tr>
+                      <td>s>thesearch</td>
+                      <td></td>
+                      <td>Creates a meme based on a webcomic.</td>
+                    </tr>
+                    <tr>
+                      <td>s>thumbsup</td>
+                      <td>vault, vaultboy</td>
+                      <td>Give a thumbs up as another user.</td>
+                    </tr>
+                    <tr>
+                      <td>s>tinder</td>
+                      <td></td>
+                      <td>tinderMatch</td>
+                    </tr>
+                    <tr>
+                      <td>s>triggered</td>
+                      <td></td>
+                      <td>Trigger someone...</td>
+                    </tr>
+                    <tr>
+                      <td>s>waifu</td>
+                      <td></td>
+                      <td>Rate someone</td>
+                    </tr>
+                    <tr>
+                      <td>s>wanted</td>
+                      <td></td>
+                      <td>Post a wanted picture of a user.</td>
+                    </tr>
+                    <tr>
+                      <td>s>wreckit</td>
+                      <td></td>
+                      <td>Based on the Wreck It Ralph 2 meme.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>Fun / 35 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>anime</td>
+                      <td></td>
+                      <td>Get information on a provided anime name.</td>
+                    </tr>
+                    <tr>
+                      <td>s>banner</td>
+                      <td>ascii</td>
+                      <td>Creates a Banner with ASCII Symbolls from text you supply.</td>
+                    </tr>
+                    <tr>
+                      <td>s>binary</td>
+                      <td></td>
+                      <td>COMMAND_BINARY_DESCRIPTION has not been localized for en-US yet.</td>
+                    </tr>
+                    <tr>
+                      <td>s>botorg</td>
+                      <td></td>
+                      <td>Searches DiscordBots.org for information on a bot.</td>
+                    </tr>
+                    <tr>
+                      <td>s>botpw</td>
+                      <td></td>
+                      <td>Searches Bots.Discord.PW for information on a bot.</td>
+                    </tr>
+                    <tr>
+                      <td>s>brix</td>
+                      <td></td>
+                      <td>Make some "Bricky" text!</td>
+                    </tr>
+                    <tr>
+                      <td>s>button</td>
+                      <td></td>
+                      <td>Create and SMASH that button!</td>
+                    </tr>
+                    <tr>
+                      <td>s>cancertext</td>
+                      <td></td>
+                      <td>What could be more cancer than this?</td>
+                    </tr>
+                    <tr>
+                      <td>s>clap</td>
+                      <td></td>
+                      <td>Y O U C A N D O T H I S</td>
+                    </tr>
+                    <tr>
+                      <td>s>clyde</td>
+                      <td></td>
+                      <td>It seems that Clyde has something to say.</td>
+                    </tr>
+                    <tr>
+                      <td>s>coin</td>
+                      <td>flip, headsortails</td>
+                      <td>Flips a coin</td>
+                    </tr>
+                    <tr>
+                      <td>s>cuddle</td>
+                      <td></td>
+                      <td>I mean, who wouldn't want to cuddle with Sistine?</td>
+                    </tr>
+                    <tr>
+                      <td>s>engwish</td>
+                      <td>hello</td>
+                      <td>English to Hewwo Translation</td>
+                    </tr>
+                    <tr>
+                      <td>s>fml</td>
+                      <td></td>
+                      <td>Gets a random FML story.</td>
+                    </tr>
+                    <tr>
+                      <td>s>fortune</td>
+                      <td></td>
+                      <td>Gets your fortune cookie.</td>
+                    </tr>
+                    <tr>
+                      <td>s>gameplay</td>
+                      <td></td>
+                      <td>Gives a steam game open url based on the game you pick</td>
+                    </tr>
+                    <tr>
+                      <td>s>handsigns</td>
+                      <td></td>
+                      <td>9/10 people say Sign Language is Handy</td>
+                    </tr>
+                    <tr>
+                      <td>s>hug</td>
+                      <td></td>
+                      <td>Why would't you want to hug Sistine?</td>
+                    </tr>
+                    <tr>
+                      <td>s>illegal</td>
+                      <td>sign</td>
+                      <td>Make President Trump make something illegal.</td>
+                    </tr>
+                    <tr>
+                      <td>s>inspire</td>
+                      <td></td>
+                      <td>Fetches a famous quote and posts it.</td>
+                    </tr>
+                    <tr>
+                      <td>s>kiss</td>
+                      <td></td>
+                      <td>Not many ways to describe kissing another user.</td>
+                    </tr>
+                    <tr>
+                      <td>s>loveship</td>
+                      <td>ship</td>
+                      <td>Used for generating love ships.</td>
+                    </tr>
+                    <tr>
+                      <td>s>manga</td>
+                      <td></td>
+                      <td>Get information on a provided manga.</td>
+                    </tr>
+                    <tr>
+                      <td>s>mock</td>
+                      <td></td>
+                      <td>Mocks the last/speificied message.</td>
+                    </tr>
+                    <tr>
+                      <td>s>moe</td>
+                      <td>weebsh</td>
+                      <td>Posts random anime images based on the type selected.</td>
+                    </tr>
+                    <tr>
+                      <td>s>pat</td>
+                      <td></td>
+                      <td>Ruffeling one's head is often a sign of close friendship in Japanese culture.</td>
+                    </tr>
+                    <tr>
+                      <td>s>poke</td>
+                      <td></td>
+                      <td>Pokeing someone, sometimes to get their attention.</td>
+                    </tr>
+                    <tr>
+                      <td>s>rate</td>
+                      <td>rate-waifu, ratewaifu</td>
+                      <td>Allows me to rate anything you ask me to.</td>
+                    </tr>
+                    <tr>
+                      <td>s>ribbon</td>
+                      <td></td>
+                      <td>Make some "Bricky" text!</td>
+                    </tr>
+                    <tr>
+                      <td>s>roast</td>
+                      <td>burn</td>
+                      <td>Generates a random roast to send to a user. May include firey mixtape.</td>
+                    </tr>
+                    <tr>
+                      <td>s>rps</td>
+                      <td></td>
+                      <td>Play rock-paper-scissors with the bot.</td>
+                    </tr>
+                    <tr>
+                      <td>s>slap</td>
+                      <td></td>
+                      <td>Apparently Sistine can get away with slapping users. Neat.</td>
+                    </tr>
+                    <tr>
+                      <td>s>trump</td>
+                      <td></td>
+                      <td>Fetch one of Trumps famous quotes!</td>
+                    </tr>
+                    <tr>
+                      <td>s>whosthatpokemon</td>
+                      <td>wtp</td>
+                      <td>Who's That Pokemon?</td>
+                    </tr>
+                    <tr>
+                      <td>s>would-you-rather</td>
+                      <td>wy-rather, wyr, wouldyourather, wyrather</td>
+                      <td>Responds with a random would you rather question.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>Moderator / 11 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>announcement</td>
+                      <td>announce</td>
+                      <td>Send new announcements, mentioning the announcement role.</td>
+                    </tr>
+                    <tr>
+                      <td>s>ban</td>
+                      <td></td>
+                      <td>Bans the mentioned member.</td>
+                    </tr>
+                    <tr>
+                      <td>s>case</td>
+                      <td></td>
+                      <td>Check a case.</td>
+                    </tr>
+                    <tr>
+                      <td>s>history</td>
+                      <td></td>
+                      <td>Check the history for the mentioned member.</td>
+                    </tr>
+                    <tr>
+                      <td>s>kick</td>
+                      <td></td>
+                      <td>Kicks the mentioned member.</td>
+                    </tr>
+                    <tr>
+                      <td>s>lockdown</td>
+                      <td></td>
+                      <td>Lock/unlock the selected channel.</td>
+                    </tr>
+                    <tr>
+                      <td>s>prune</td>
+                      <td></td>
+                      <td>Prunes a certain amount of messages w/o filter.</td>
+                    </tr>
+                    <tr>
+                      <td>s>reason</td>
+                      <td></td>
+                      <td>Edit the reason field from a case.</td>
+                    </tr>
+                    <tr>
+                      <td>s>softban</td>
+                      <td></td>
+                      <td>Softbans the mentioned member.</td>
+                    </tr>
+                    <tr>
+                      <td>s>unban</td>
+                      <td></td>
+                      <td>Unbans the mentioned user.</td>
+                    </tr>
+                    <tr>
+                      <td>s>warn</td>
+                      <td></td>
+                      <td>Warns the mentioned member.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>Music / 9 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>clearqueue</td>
+                      <td></td>
+                      <td>Prune the queue list.</td>
+                    </tr>
+                    <tr>
+                      <td>s>leave</td>
+                      <td>forceleave, leave, stopmusic, musicstop, stop</td>
+                      <td>Clears the queue and leaves</td>
+                    </tr>
+                    <tr>
+                      <td>s>nowplaying</td>
+                      <td></td>
+                      <td>Get information from the current song.</td>
+                    </tr>
+                    <tr>
+                      <td>s>pause</td>
+                      <td></td>
+                      <td>Pauses the current song.</td>
+                    </tr>
+                    <tr>
+                      <td>s>play</td>
+                      <td>music-play, musicplay</td>
+                      <td>Play a song</td>
+                    </tr>
+                    <tr>
+                      <td>s>queue</td>
+                      <td></td>
+                      <td>Check the queue list.</td>
+                    </tr>
+                    <tr>
+                      <td>s>resume</td>
+                      <td></td>
+                      <td>Resumes the current song.</td>
+                    </tr>
+                    <tr>
+                      <td>s>skip</td>
+                      <td>vol</td>
+                      <td>Skip the current song.</td>
+                    </tr>
+                    <tr>
+                      <td>s>volume</td>
+                      <td></td>
+                      <td>Change the volume</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>NSFW / 3 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>boobs</td>
+                      <td>boobies, tits, boob, titties</td>
+                      <td>Gets a NSFW boob image.</td>
+                    </tr>
+                    <tr>
+                      <td>s>booty</td>
+                      <td>ass, butt, butts</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>s>pussy</td>
+                      <td></td>
+                      <td>NSFW Pussy Picture.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>Response / 9 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>8ball</td>
+                      <td>magic8</td>
+                      <td>Same thing as the magic 8ball toy.</td>
+                    </tr>
+                    <tr>
+                      <td>s>chucknorris</td>
+                      <td></td>
+                      <td>Tells a Chuck Norris Joke.</td>
+                    </tr>
+                    <tr>
+                      <td>s>compliment</td>
+                      <td></td>
+                      <td>Compliments a person mentioned.</td>
+                    </tr>
+                    <tr>
+                      <td>s>insult</td>
+                      <td></td>
+                      <td>Insult someone with some very bad insults that I offers you.</td>
+                    </tr>
+                    <tr>
+                      <td>s>joke</td>
+                      <td>dad</td>
+                      <td>Sistine loves jokes, why not have her tell you some?</td>
+                    </tr>
+                    <tr>
+                      <td>s>meme</td>
+                      <td></td>
+                      <td>Have you heard about these meme's?</td>
+                    </tr>
+                    <tr>
+                      <td>s>pickuplines</td>
+                      <td>pickupline</td>
+                      <td>Want some cheezy pickup lines? I got you fam.</td>
+                    </tr>
+                    <tr>
+                      <td>s>why</td>
+                      <td></td>
+                      <td>Someone out there deserves a pat, let's do it!</td>
+                    </tr>
+                    <tr>
+                      <td>s>yomomma</td>
+                      <td>yomommasofat, yomommajoke</td>
+                      <td>Who doesn't like some YoMomma jokes? Let's read them with me</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>User / 20 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>avatar</td>
+                      <td>avtr</td>
+                      <td>Get a mentioned user avatar.</td>
+                    </tr>
+                    <tr>
+                      <td>s>daily</td>
+                      <td></td>
+                      <td>Collect your daily points!</td>
+                    </tr>
+                    <tr>
+                      <td>s>help</td>
+                      <td>commands</td>
+                      <td>Display help for a command.</td>
+                    </tr>
+                    <tr>
+                      <td>s>info</td>
+                      <td>details, what</td>
+                      <td>Provides some information about this bot.</td>
+                    </tr>
+                    <tr>
+                      <td>s>invite</td>
+                      <td></td>
+                      <td>Displays the join server link of the bot.</td>
+                    </tr>
+                    <tr>
+                      <td>s>leaderboard</td>
+                      <td>lb</td>
+                      <td>Check the current credit leaderboard!</td>
+                    </tr>
+                    <tr>
+                      <td>s>level</td>
+                      <td></td>
+                      <td>Check your current level.</td>
+                    </tr>
+                    <tr>
+                      <td>s>ping</td>
+                      <td></td>
+                      <td>Runs a connection test to Discord.</td>
+                    </tr>
+                    <tr>
+                      <td>s>poll</td>
+                      <td></td>
+                      <td>Runs a connection test to Discord.</td>
+                    </tr>
+                    <tr>
+                      <td>s>profile</td>
+                      <td>balance, bal, credits</td>
+                      <td>Check yours or another user's profile.</td>
+                    </tr>
+                    <tr>
+                      <td>s>reputation</td>
+                      <td>rep</td>
+                      <td>Give a user a reputal point!</td>
+                    </tr>
+                    <tr>
+                      <td>s>role</td>
+                      <td></td>
+                      <td>Gets information on a role with a mention or id.</td>
+                    </tr>
+                    <tr>
+                      <td>s>server</td>
+                      <td>guild</td>
+                      <td>Gets information on the server your currently looking at.</td>
+                    </tr>
+                    <tr>
+                      <td>s>stats</td>
+                      <td></td>
+                      <td>Provides some details about the bot and stats.</td>
+                    </tr>
+                    <tr>
+                      <td>s>subscribe</td>
+                      <td></td>
+                      <td>Subscribe to this servers' announcements.</td>
+                    </tr>
+                    <tr>
+                      <td>s>support</td>
+                      <td></td>
+                      <td>Get some of the Support Links for Sistine</td>
+                    </tr>
+                    <tr>
+                      <td>s>unsubscribe</td>
+                      <td></td>
+                      <td>Unsubscribe to this servers' announcements.</td>
+                    </tr>
+                    <tr>
+                      <td>s>user</td>
+                      <td></td>
+                      <td>Gets information on a mentioned user.</td>
+                    </tr>
+                    <tr>
+                      <td>s>userconf</td>
+                      <td></td>
+                      <td>Define per-user configuration.</td>
+                    </tr>
+                    <tr>
+                      <td>s>xp</td>
+                      <td>experience</td>
+                      <td>Check how many points you have.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2>Utility / 9 Commands</h2>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+
+                  <thead>
+                    <tr>
+                      <th>Command Name</th>
+                      <th>Aliases</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>s>afk</td>
+                      <td>setafk</td>
+                      <td>Tell the world that your not at your computer.</td>
+                    </tr>
+                    <tr>
+                      <td>s>echo</td>
+                      <td>talk</td>
+                      <td>Makes Sistine speak in this/another text channel.</td>
+                    </tr>
+                    <tr>
+                      <td>s>emoji</td>
+                      <td></td>
+                      <td>Supersize that emoji.</td>
+                    </tr>
+                    <tr>
+                      <td>s>fetchmsg</td>
+                      <td>content</td>
+                      <td>Get the message content of a message with markdown</td>
+                    </tr>
+                    <tr>
+                      <td>s>password</td>
+                      <td></td>
+                      <td>Generate a random string/password in your DMs</td>
+                    </tr>
+                    <tr>
+                      <td>s>quote</td>
+                      <td></td>
+                      <td>Quotes a users message from said message channel or mentioned channel.</td>
+                    </tr>
+                    <tr>
+                      <td>s>remind</td>
+                      <td></td>
+                      <td>creates a reminder</td>
+                    </tr>
+                    <tr>
+                      <td>s>shards</td>
+                      <td>shard</td>
+                      <td>Makes Sistine speak in this/another text channel.</td>
+                    </tr>
+                    <tr>
+                      <td>s>shorten</td>
+                      <td>short, goo.gl, shortner</td>
+                      <td>Shorten any url with goo.gl.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </article>
+    </section>
+    <footer>
+      <script src="/assets/js/charts.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          if (!localStorage.getItem('HasSeenAnnoyingPopup')) {
+            var modal = document.createElement('div');
+            modal.classList.add('modal');
+            modal.innerHTML = '<div class="modal-background" style="z-index: -50;"></div>\
+                              <div class="modal-content" style="background-color: white; padding: 20px;">\
+                                  <p style="margin-bottom: 15px;">We use cookies to understand how you use our site and to improve your experience. This includes personalizing content and advertising. To learn more, <a href="https://sistine.ml/terms"><strong>click here</strong></a>. By continuing to use our site, you accept our use of cookies, revised Privacy Policy and Terms of Use.</p>\
+                                  <div></div>\
+                                  <button style="background-color: #2E4492!important" class="button colorr is-primary" onClick="this.parentNode.parentNode.classList.remove(\'is-active\');localStorage.setItem(\'HasSeenAnnoyingPopup\', true)">Close</button>\
+                              </div>';
+            modal.classList.add('is-active');
+            document.body.appendChild(modal);
+          }
+        });
+      </script>
+      <script>
+        function botlists() {
+          let modal = document.createElement('div');
+          modal.classList.add('modal');
+          modal.innerHTML = '<div class="modal-background" style="z-index: -50;"></div>\
+                              <div class="modal-content" style="background-color: white; padding: 20px;">\
+                                  <p style="margin-bottom: 15px;">In order to ensure Sistine stays online, we need help to keep her public. Voting for her on public discord bot listings helps us keep her active and allow her to grow bigger in size. If you can vote for Sistine on each of the sites below, we would appreciate it greatly.</p>\
+                                  <p style="margin-bottom: 15px;"><a href="https://discordbot.world/bot/353929487018229762" target="_blank"><b>DiscordBotWorld</b></a> <br> <a href="https://discordbots.org/bot/353929487018229762" target="_blank"><b>DiscordBots.Org</b></a> <br> <a href="https://bots.discord.pw/bots/353929487018229762" target="_blank"><b>Bots.Discord</b></a> <br> <a href="https://botsfordiscord.com/bot/353929487018229762"><b>BotsForDiscord</b></a></p>\
+                                  <div></div>\
+                                  <button style="background-color: #2E4492!important" class="button colorr is-primary" onClick="this.parentNode.parentNode.classList.remove(\'is-active\');">Close</button>\
+                              </div>';
+          modal.classList.add('is-active');
+          document.body.appendChild(modal);
+
+        }
+      </script>
+
+      <div class="centered clearfix">
+        <div class="footer-logo">
+          <p style="font-family: Buffalo; font-size: 375%">Sistine Fibel</p>
+
+        </div>
+        <div class="footer-navigation">
+          <div class="footer-links-holder">
+            <h3>IMPORTANT LINKS</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="/terms">Terms of Service & Privacy</a>
+              </li>
+              <li>
+                <a href="https://discord.gg/jgPNHWy">Support Guild</a>
+              </li>
+              <li>
+                <a href="https://klasa.js.org">Get Started with Klasa!</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-links-holder">
+            <h3>PARTNERS</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="https://discordbots.org/bot/pengubot">PenguBot</a>
+              </li>
+              <li>
+                <a href="https://discordbots.org/bot/331366307872243714">ApexBot</a>
+              </li>
+              <li>
+                <a href='https://discordbots.org/bot/341124681211969539'>ExcelledBot</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-links-holder">
+            <h3>EXTRAS</h3>
+            <ul class="footer-links">
+              <li>
+                <span>
+                  <span>Random Switch</span>
+                  <label class="dThemeSwitch">
+                    <input id="darkThemeEnabler" type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <p class="disclaimer">Use of this Web site constitutes acceptance of the Terms and Conditions and Privacy Policy. All copyrights, trademarks,
+          service marks belong to the corresponding owners.</p>
+      </div>
+    </footer>
+</body>
+
+</html>
