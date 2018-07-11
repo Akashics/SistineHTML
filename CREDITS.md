@@ -1,5 +1,5 @@
 
-###Credits
+#Credits
 
 I have to say, to everyone who's helped me on what was once just a "me" project, thank you for putting up with a stubborn kid who didn't have a single clue what he was doing, but ended up making something he thinks was worth his time. Now this list of people is not limited to just the people on the list, if your not here, just dm this user: `201077739589992448` on discord, chances are you know who that is. 
 
