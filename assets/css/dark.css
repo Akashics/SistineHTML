@@ -12,6 +12,15 @@ footer{
     border-width: 2px;
 }
 
+#commands {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.category {
+    padding-top:25px;
+}
+
 .shapes-background{
     filter:invert(1) grayscale();
     transform:scale(1.1) !important;
