@@ -343,7 +343,7 @@ let commandUsage2 = Highcharts.chart('commandUsage2', {
 
 function requestData() {
     $.ajax({
-        url: 'http://23.94.188.100:7575/application',
+        url: 'https://api.sistine.moe/application',
         success: function (point) {
             commandUsage.series[0].setData(point.health.cmds);
             commandUsage.series[1].setData(point.health.mpm);
@@ -371,7 +371,7 @@ function requestData() {
 
 function requestRam() {
     $.ajax({
-        url: 'http://23.94.188.100:7575/application',
+        url: 'https://api.sistine.moe/application',
         success: function (point) {
             commandUsage2.series[0].setData(point.health.ram.used);
             commandUsage2.series[1].setData(point.health.cpu);
