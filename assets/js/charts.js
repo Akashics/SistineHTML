@@ -349,23 +349,23 @@ function requestData() {
             commandUsage.series[1].setData(point.health.mpm);
 
             $('#guilds').text(point.guilds.toLocaleString());
-            $('#voice').text(point.channels.voiceChannels);
-            $('#text').text(point.channels.textChannels.toLocaleString());
+            // $('#voice').text();
+            $('#text').text(point.channels.toLocaleString());
             $('#users').text(point.users.toLocaleString());
 
-            $('#messages').text(point.messages.toLocaleString());
-            $('#executions').text(point.executions.toLocaleString());
+            // $('#messages').text(point.messages.toLocaleString());
+            // $('#executions').text(point.executions.toLocaleString());
             $('#ping').text(point.latency.ping.toLocaleString() + 'ms');
-            $('#uptime').text(Math.floor((point.uptime / 3600000) % 24).toLocaleString() + ' hours');
+            $('#uptime').text(point.uptime);
 
-            $('#cpu').text(point.health.cpu[59].toLocaleString() + '%');
-            $('#ram').text(point.health.ram.used[59].toLocaleString() + 'MB');
-            $('#cmds').text(point.health.cmds[59].toLocaleString());
-            $('#mpm').text(point.health.mpm[59].toLocaleString());
+            #$('#cpu').text(point.health.cpu[59].toLocaleString() + '%');
+            #$('#ram').text(point.health.ram.used[59].toLocaleString() + 'MB');
+            #$('#cmds').text(point.health.cmds[59].toLocaleString());
+            #$('#mpm').text(point.health.mpm[59].toLocaleString());
 
             setTimeout(requestData, 60000);
         },
-        cache: false
+        cache: true
     });
 }
 
@@ -373,10 +373,10 @@ function requestRam() {
     $.ajax({
         url: 'https://api.sistine.moe/application',
         success: function (point) {
-            commandUsage2.series[0].setData(point.health.ram.used);
-            commandUsage2.series[1].setData(point.health.cpu);
+            #commandUsage2.series[0].setData(point.health.ram.used);
+            #commandUsage2.series[1].setData(point.health.cpu);
             setTimeout(requestRam, 60000);
         },
-        cache: false
+        cache: true
     });
 }
